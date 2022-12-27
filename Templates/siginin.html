@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
+<title>Register Page</title>
+</head>
+<body>
+    <div id="message" class="alert alert-primary ml-auto text-center" role="alert">
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+        
+    </div>
+
+    <div class="form">
+        <form
+        class="form-horizontal m-t-20"
+        id="loginform"
+        action=""
+        method="post"
+      >
+      {% csrf_token %}
+
+        <h2>Register Here</h2>
+        <input type="text" name="username" placeholder="Username Here">
+        <br>
+        <input type="email" name="email" placeholder="Email Here">
+        <br>
+        <input type="password" name="password" placeholder="Password Here">
+        <br>
+        <input type="password" name="password2" placeholder="Confirm Password Here">
+        <br>
+        <button type="submit" class="btnn">Register</button>
+        <br><br><br>
+        <p class="link">Already have an account?<br>
+        <a href="{% url 'login' %} ">Sign In</a> here</a></p>
+       
+        <!-- <img src="{% static 'assets/img/hero-bg.png' %}" alt="img" /> -->
+        </form>
+        
+     <div class="icon">
+         <a href="@"><ion-icon name="logo-facebook"></ion-icon></a>
+         <a href="@"><ion-icon name="logo-instagram"></ion-icon></a>
+         <a href="@"><ion-icon name="logo-twitter"></ion-icon></a>
+         <a href="@"><ion-icon name="logo-google"></ion-icon></a>
+
+     </div>
+
+     </div>
+
+ </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>

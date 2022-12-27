@@ -1,0 +1,217 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>FileOcean</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon" />
+    <link
+      href="{% static 'assets/img/apple-touch-icon.png' %}"
+      rel="apple-touch-icon"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: eStartup - v4.7.1
+  * Template URL: https://bootstrapmade.com/estartup-bootstrap-landing-page-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div id="logo">
+          <h1>
+            <a href="index.html"><span>File</span>Ocean</a>
+          </h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" title="" /></a>-->
+        </div>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+            <li><a class="nav-link scrollto" href="#features">Features</a></li>
+            <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Accounts</span> <i class="bi bi-chevron-down"></i
+              ></a>
+              <ul>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li class="dropdown">
+                  <a href="#"
+                    ><span>More</span>
+                    <i class="bi bi-chevron-right"></i
+                  ></a>
+                  <ul>
+                    <li><a href=" {% url 'register' %} ">Register</a></li>
+                    <li><a href=" {% url 'login' %} ">Login</a></li>
+                    <li><a href="{% url 'logout' %}">LogOut</a></li>
+                    <li><a href="{% url 'password_reset' %}">Request OTP</a></li>
+                  </ul>
+                </li>
+               
+              </ul>
+            </li>
+            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            <li><a class="nav-link scrollto"> {% if user.is_authenticated %}
+              Hi, {{user.username}}
+              {% endif %}</a></li>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+          <li><a class="nav-link scrollto" href="{% url 'file_list' %}">My Files</a></li>
+        </nav>
+        <!-- .navbar -->
+      </div>
+    </header>
+    <!-- End Header -->
+    <!-- End Hero Section -->
+    <main id="main">
+       {% block contents %}
+      <!-- ======= Features Section ======= -->
+      <section id="features" class="padd-section text-center">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title text-center">
+            <h2>Your Uploaded Files </h2>
+            <h2 class="separator">Carefully Curated  To Suit You</h2>
+          </div>
+            {% if files %}
+            {% for file in files %}
+          <div class="col-12 d-flex no-block align-items-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-md-6 col-lg-3">
+              <div class="feature-block">
+                <img src="{% static 'assets/img/lang2.png' %}" alt="img" />
+                <h2> {{file.title}} </h2>
+                <p>
+                    {{file.file_uploaded}}
+                </p>
+              </div>
+            </div>
+          {% endfor %}
+          {% else %}
+          <h1 class="separator">No Files Uploaded. </h1>
+          {% endif %}
+         
+          </div>
+        </div>
+      </section>
+      <!-- End Features Section -->
+      </section>    
+      {% endblock contents %}
+    </main>
+    <!-- ======= Footer ======= -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-4">
+            <div class="footer-logo">
+              <a class="navbar-brand" href="#">FileOcean</a>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3 col-lg-2">
+            <div class="list-menu">
+              <h4>About Us</h4>
+
+              <ul class="list-unstyled">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3 col-lg-2">
+            <div class="list-menu">
+              <h4>About Us</h4>
+
+              <ul class="list-unstyled">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Features item</a></li>
+                <li><a href="#">Live streaming</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3 col-lg-2">
+            <div class="list-menu">
+              <h4>Support</h4>
+
+              <ul class="list-unstyled">
+                <li><a href="#">faq</a></li>
+                <li><a href="#">Editor help</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyrights">
+        <div class="container">
+          <p>&copy; Copyrights Digital Ocean. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- End  Footer -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>
