@@ -53,7 +53,7 @@ def signUp(request):
                 #Email welcome
                 subject = 'Welcome to FileOcean Cloud Storage '
                
-                message = 'Hello' + user.username + '!!' + 'Welcome to FileOcean Cloud Storage, Thank you for visiting our website, we have sent you a confirmation email, Kindly confirm to activate your account, Thank You, The Rift Team'
+                message = 'Hello' + user.username + '!!' + 'Welcome to FileOcean Cloud Storage, Thank you for visiting our website, we have sent you a confirmation email, Kindly confirm to activate your account, Thank You, The FileOcean Team'
                
                 from_email = settings.EMAIL_HOST_USER
                
