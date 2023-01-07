@@ -113,6 +113,11 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero">
       <div class="hero-container" data-aos="fade-in">
+        <div  class="alert alert-primary ml-auto text-center" role="alert">
+          {% if message %}
+          {{message}}
+          {% endif %} 
+        </div>
         <h1>Welcome to The Most Secured File Storage</h1>
 
         <a href="#get-started" class="btn-get-started scrollto">Dive & Explore</a>
