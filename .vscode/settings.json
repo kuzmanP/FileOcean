@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["authtoken", "Reponse"],
+  "cSpell.words": ["authtoken", "Reponse", "simplejwt"],
   "sqltools.connections": [
     {
       "previewLimit": 50,
