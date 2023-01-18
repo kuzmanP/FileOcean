@@ -1,0 +1,15 @@
+{
+  "cSpell.words": ["authtoken", "Reponse", "simplejwt"],
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "database": "fileoceandb",
+      "password": "rootpass",
+      "username": "kuzman",
+      "name": "okay"
+    }
+  ]
+}

@@ -24,7 +24,7 @@ def index(request):
     return render(request, 'Templates/index.html')
 
 class FileCreate(CreateView):
-    model = StorageFiles
+    model = StorageFiles 
     fields = ['title','date_uploaded','file_uploaded']
     success_url = ('http://127.0.0.1:8000/filer/')
         
