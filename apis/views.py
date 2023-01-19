@@ -84,7 +84,7 @@ class LoginView(APIView):
         if user is None:
             raise AuthenticationFailed('User Not Found')
         
-        if user.check_password(password):
+        if not user.check_password(password):
             raise AuthenticationFailed('Incorrect password')
         
         #jwt payload
