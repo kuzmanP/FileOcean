@@ -96,7 +96,7 @@ class LoginView(APIView):
         }
         
         #jwt token
-        token = jwt.encode(payload,'secret',algorithm='HS256').decode(utf-8)
+        token = jwt.encode(payload,'secret',algorithm='HS256').decode('utf-8')
         
         return Response({
             'message':'success',
