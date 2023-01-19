@@ -90,8 +90,8 @@ class LoginView(APIView):
         #jwt payload
         payload={
             'id':user.id,
-            'expiry':datetime.datetime.utcnow() + datetime.timedelta(minutes=80),
-            'token_created_date':datetime.datetime.utcnow()
+            'exp':datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+            'iat':datetime.datetime.utcnow()
             
         }
         
