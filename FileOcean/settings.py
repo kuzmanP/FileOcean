@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'drf_yasg',
     'rest_framework_simplejwt',
+    'corsheaders',
     
     
 ]
@@ -64,6 +65,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -178,3 +180,11 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 #Media url
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
+
+
+
+CORS_ALLOWED_CREDENTIALS=True
+
+CORS_ALLOWED_ORIGIN_REGEXES=True
+
+CORS_ALLOW_ALL_ORIGINS=True
