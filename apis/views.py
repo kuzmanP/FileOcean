@@ -5,6 +5,7 @@ from rest_framework.schemas import SchemaGenerator
 from rest_framework.views import APIView
 from rest_framework_swagger import renderers
 from rest_framework import status
+from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.authentication import TokenAuthentication
@@ -16,6 +17,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from users.models import Profile
+import jwt,datetime
 
 # Create your views here.
 
@@ -73,4 +75,35 @@ class ProfileAPI(APIView):
              return Response(serializer.data, status=status.HTTP_201_CREATED)
          return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)                    
     
+class LoginView(APIView):
+    def post(self,request):
+        email=request.data['email']
+        password=request.data['password']
+        user=User.objects.filter(email=email).first()
+        
+        if user is None:
+            raise AuthenticationFailed('User Not Found')
+        
+        if user.check_password(password):
+            raise AuthenticationFailed('Incorrect password')
+        
+        #jwt payload
+        payload={
+            'id':user.id,
+            'expiry':datetime.datetime.utcnow() + datetime.timedelta(minutes=80),
+            'token_created_date':datetime.datetime.utcnow()
+            
+        }
+        
+        #jwt token
+        token = jwt.encode(payload,'secret',algorithm='HS256').decode(utf-8)
+        
+        return Response({
+            'message':'success',
+            'jwt':token
+            
+        })
+            
+            
+            
    
