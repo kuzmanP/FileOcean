@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,render_to_response
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.views import generic 
 from django.db.models import Q
