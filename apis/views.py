@@ -109,10 +109,13 @@ class LoginView(APIView):
         }
 
         return response
-        
+
+#Using Cookies to retrieve The users        
 class UserView(APIView):
     def get(self,request):
-        pass
+        token=request.COOKIES.get(jwt)
+        
+        return Response(token)
                 
             
             
