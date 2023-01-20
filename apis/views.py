@@ -121,7 +121,7 @@ class UserView(APIView):
             raise AuthenticationFailed('Not authenticated')
         #Getting Payload
         try:
-            payload= jwt.decode(token, 'secret',  algorithm=['HS256'])
+            payload= jwt.decode(token, 'secret',  algorithms=['HS256'])
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed('Not authenticated')    
         
@@ -132,6 +132,13 @@ class UserView(APIView):
         serializer = UserSerializer(user)
         return Response(serializer.data)
                 
-            
-            
+#Logging out user using the jwt based cookies            
+class LogoutView(APIView):
+    def post(self, request):
+        response = Response()
+        response.delete_cookie('jwt')
+        response.data = {
+            'message': 'success'
+        }
+        return response            
    
