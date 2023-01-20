@@ -113,6 +113,7 @@ class LoginView(APIView):
 
 #Using Cookies to retrieve The users        
 class UserView(APIView):
+    
     def get(self,request):
         token=request.COOKIES.get(jwt)
         
