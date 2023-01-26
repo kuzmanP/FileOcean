@@ -41,6 +41,11 @@ class UserAPIView(APIView):
 class UserID_APIView(APIView):  
       
     authentication_classes=[TokenAuthentication]
+    def get(self,request,id):
+        profile=Profile.objects.all().filter(id=id)
+        serializer=ProfileSerializer(profile, many=True)
+        return Response(serializer.data)     
+    
     def put(self, request, id):
          user=get_object_or_404(User.objects.all(), id=id)
          serializer=UserSerializer (user, data=request.data)
