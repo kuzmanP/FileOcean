@@ -2,4 +2,5 @@
 /media
 .gitignore
 apis/__pycache__
-/FileOcean
+*/FileOcean
+/static
