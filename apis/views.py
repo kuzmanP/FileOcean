@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.schemas import SchemaGenerator
@@ -115,6 +115,7 @@ class LoginView(APIView):
         }
 
         return response
+        return redirect("/")
 
 #Using Cookies to retrieve The users        
 class UserView(APIView):
