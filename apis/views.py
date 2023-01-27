@@ -146,5 +146,6 @@ class LogoutView(APIView):
         response.data = {
             'message': 'success, Logged out user'
         }
-        return response            
+        return response   
+        return redirect("accounts/logout")         
    
