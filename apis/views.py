@@ -68,6 +68,14 @@ class UniqueUserAPIView(APIView):
         user=User.objects.all().filter(id=id)
         serializer=UserSerializer(user, many=True)
         return Response(serializer.data)
+  
+class ProfileCreate(generics.CreateAPIView):
+    queryset=ProfileSerializer
+    permission_classes=AllowAny
+    serializer_class=ProfileSerializer  
+  
+  
+  
         
 class ProfileAPI(APIView):
     authentication_classes=[TokenAuthentication]
