@@ -20,6 +20,8 @@ from users.models import Profile
 import jwt,datetime
 from rest_framework.throttling import UserRateThrottle,ScopedRateThrottle
 
+from rest_framework import generics
+
 # Create your views here.
 
 #USER APIs
@@ -82,38 +84,10 @@ class ProfileAPI(APIView):
              return Response(serializer.data, status=status.HTTP_201_CREATED)
          return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
                        
-class UserRegisterView(APIView):
-    def post(self, request):
-        serializer=UserRegister(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
-    
-        #jwt payload for the created user
-        payload={
-            'id':user.id,
-            'exp':datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
-            'iat':datetime.datetime.utcnow()
-            
-        }
-        
-        #jwt token
-        token = jwt.encode(payload, 'secret', algorithm='HS256')
-        
-        response= Response()
-        
-         #Cookies
-        response.set_cookie(key='jwt', value = token, httponly=True)
-        
-        response.data = {
-            'message':'success',
-            'jwt':token
-            
-        }
-
-        return response
-        return redirect("/")
+class UserRegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    permission_classes = (AllowAny,)
+    serializer_class = UserRegister
       
 class LoginView(APIView):
     
