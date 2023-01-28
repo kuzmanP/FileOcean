@@ -71,7 +71,7 @@ class UniqueUserAPIView(APIView):
   
 class ProfileCreate(generics.CreateAPIView):
     queryset=Profile.objects.all()
-    permission_classes=AllowAny
+    permission_classes=(AllowAny,)
     serializer_class=ProfileSerializer  
   
   
