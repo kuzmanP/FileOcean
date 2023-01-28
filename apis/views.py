@@ -18,6 +18,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from users.models import Profile
 import jwt,datetime
+from rest_framework.throttling import UserRateThrottle
 
 # Create your views here.
 
@@ -81,6 +82,7 @@ class ProfileAPI(APIView):
          return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)                    
     
 class LoginView(APIView):
+    throttle_classes=[UserRateThrottle]
     def post(self,request):
         username=request.data['username']
         password=request.data['password']
