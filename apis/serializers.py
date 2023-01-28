@@ -21,6 +21,8 @@ class ProfileSerializer(serializers.ModelSerializer):
             contact=validated_data['contact'],
             
         )
+        profile.save()
+        return profile
     
         
 class UserRegister(serializers.ModelSerializer):
