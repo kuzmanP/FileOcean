@@ -18,7 +18,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from users.models import Profile
 import jwt,datetime
-from rest_framework.throttling import UserRateThrottle
+from rest_framework.throttling import UserRateThrottle,ScopedRateThrottle
 
 # Create your views here.
 
@@ -69,6 +69,7 @@ class UniqueUserAPIView(APIView):
         
 class ProfileAPI(APIView):
     authentication_classes=[TokenAuthentication]
+    throttle_scope='Profile'
     def get(self,request,id):
         profile=Profile.objects.all().filter(id=id)
         serializer=ProfileSerializer(profile, many=True)
