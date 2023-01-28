@@ -12,7 +12,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-from .serializers import UserSerializer,ProfileSerializer
+from .serializers import UserSerializer,ProfileSerializer,UserRegister
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
@@ -84,7 +84,7 @@ class ProfileAPI(APIView):
                        
 class UserRegisterView(APIView):
     def post(self, request):
-        serializer=UserSerializer(data=request.data)
+        serializer=UserRegister(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
