@@ -1,6 +1,3 @@
-/__pycache__
+*/__pycache__
 /media
 .gitignore
-apis/__pycache__
-*/FileOcean
-/static
