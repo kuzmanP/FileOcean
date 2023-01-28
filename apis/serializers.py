@@ -14,6 +14,14 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model= Profile
         fields=['bio','contact','User_type','user']   
+    
+    def create(self, validated_data):
+        profile = Profile.objects.create(
+            bio=validated_data['bio'],
+            contact=validated_data['contact'],
+            
+        )
+    
         
 class UserRegister(serializers.ModelSerializer):
     email = serializers.EmailField(
