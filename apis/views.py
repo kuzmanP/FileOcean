@@ -83,7 +83,7 @@ class ProfileAPI(APIView):
          return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)                    
     
 class LoginView(APIView):
-    throttle_classes=[UserRateThrottle]
+    
     def post(self,request):
         username=request.data['username']
         password=request.data['password']
@@ -122,7 +122,6 @@ class LoginView(APIView):
 
 #Using Cookies to retrieve The users        
 class UserView(APIView):
-    throttle_classes=[UserRateThrottle]
     def get(self,request):
         token=request.COOKIES.get('jwt')
         
