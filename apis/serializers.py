@@ -15,7 +15,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         model= Profile
         fields=['bio','contact','User_type','user']   
     
-    def create(self, validated_data):
+    def post(self, validated_data):
         profile = Profile.objects.create(
             bio=validated_data['bio'],
             contact=validated_data['contact'],
