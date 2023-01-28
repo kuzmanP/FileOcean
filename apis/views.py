@@ -80,8 +80,41 @@ class ProfileAPI(APIView):
          if serializer.is_valid():
              serializer.save()
              return Response(serializer.data, status=status.HTTP_201_CREATED)
-         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)                    
+         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
+                       
+class UserRegisterView(APIView):
+    def post(self, request):
+        serializer=UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
     
+        #jwt payload for the created user
+        payload={
+            'id':user.id,
+            'exp':datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+            'iat':datetime.datetime.utcnow()
+            
+        }
+        
+        #jwt token
+        token = jwt.encode(payload, 'secret', algorithm='HS256')
+        
+        response= Response()
+        
+         #Cookies
+        response.set_cookie(key='jwt', value = token, httponly=True)
+        
+        response.data = {
+            'message':'success',
+            'jwt':token
+            
+        }
+
+        return response
+        return redirect("/")
+      
 class LoginView(APIView):
     
     def post(self,request):
