@@ -121,7 +121,7 @@ class LoginView(APIView):
 
 #Using Cookies to retrieve The users        
 class UserView(APIView):
-    
+    throttle_classes=[UserRateThrottle]
     def get(self,request):
         token=request.COOKIES.get('jwt')
         
