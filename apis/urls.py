@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import UserAPIView,UserID_APIView,UniqueUserAPIView,ProfileAPI,LoginView,UserView,LogoutView
+from .views import UserAPIView,UserID_APIView,UniqueUserAPIView,ProfileAPI,LoginView,UserView,LogoutView,UserRegisterView
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view as swagger_get_schema_view
 
@@ -24,4 +24,5 @@ urlpatterns = [
     path("users/login", LoginView.as_view(), name="api_user_login"),
     path("users/all", UserView.as_view(), name="api_user_all"),
     path("users/logout", LogoutView.as_view(), name="api_user_logout"),
+    path("users/register", UserRegisterView.as_view(), name="api_user_create"),
 ]
