@@ -19,6 +19,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         profile = Profile.objects.create(
             bio=validated_data['bio'],
             contact=validated_data['contact'],
+            user=validated_data['user'],
             
         )
         profile.save()
