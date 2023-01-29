@@ -23,7 +23,7 @@ urlpatterns = [
     path("profile/<int:id>", ProfileAPI.as_view(), name="profile"),
     path("profile/create", ProfileCreate.as_view(), name="profile_create"),
     path("users/login", LoginView.as_view(), name="api_user_login"),
-    path("users/all", UserView.as_view(), name="api_user_all"),
+    path("user/", UserView.as_view(), name="api_user_all"),
     path("users/logout", LogoutView.as_view(), name="api_user_logout"),
     path("users/register", UserRegisterView.as_view(), name="api_user_create"),
 ]
