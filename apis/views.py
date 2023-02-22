@@ -28,7 +28,7 @@ from rest_framework import generics
 
 class UserAPIView(APIView):
     
-    authentication_classes=[TokenAuthentication]
+    #authentication_classes=[TokenAuthentication]
     def get(self, request):
         user=User.objects.all()
         serializer=UserSerializer(user, many=True)
