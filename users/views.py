@@ -56,7 +56,7 @@ def userProfile(request):
     image=profile.avatar
     context={
             'profile':profile,
-            'image':image,
+            'image':images,
            
             
  
