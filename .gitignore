@@ -1,2 +1,12 @@
 */__pycache__
+<<<<<<< HEAD
 */media
+=======
+/media
+.gitignore
+<<<<<<< HEAD
+*/migrations
+=======
+*/users/migrations
+>>>>>>> apis
+>>>>>>> main
