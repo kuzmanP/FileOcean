@@ -62,6 +62,7 @@ def userProfile(request):
  
     } 
     return render(request,'Templates/userProfile.html',context)
+    
 
 @login_required(login_url="login")
 def ProfileUpdate(request):
@@ -70,7 +71,7 @@ def ProfileUpdate(request):
         if profile_form.is_valid():
             profile_form.save()
             messages.success(request, 'Your Profile Has Been Updated')
-            return redirect(to='profile_update')
+            
     else:
         profile_form= ProfileForm(instance=request.user.profile)
       
