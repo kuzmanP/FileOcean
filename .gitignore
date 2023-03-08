@@ -1,4 +1,7 @@
 */__pycache__
+<<<<<<< HEAD
+*/media
+=======
 /media
 .gitignore
 <<<<<<< HEAD
@@ -6,3 +9,4 @@
 =======
 */users/migrations
 >>>>>>> apis
+>>>>>>> main
