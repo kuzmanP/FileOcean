@@ -53,8 +53,10 @@ def userSearch(request):
 @login_required(login_url="login")
 def userProfile(request):
     profile= Profile.objects.get(user=request.user) 
+    image=profile.avatar
     context={
             'profile':profile,
+            'image':image,
            
             
  
