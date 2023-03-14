@@ -35,9 +35,11 @@
       <!-- E-mail Client - START -->
       
       <div  class="alert alert-primary ml-auto text-center" role="alert">
-        {% if message %}
+       
+       {% for message in messages %}
         {{message}}
-        {% endif %} 
+       {% endfor %}
+         
       </div>
       
       
