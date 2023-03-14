@@ -36,6 +36,11 @@
       
       
       
+      <div id="message" class="alert alert-primary ml-auto text-center" role="alert">
+        {% for message in messages %}
+        {{message}}
+        {% endfor %} 
+      </div>
       
       <div class="container pb-mail-template1">
         <div class="row">
