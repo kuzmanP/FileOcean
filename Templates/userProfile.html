@@ -33,14 +33,11 @@
       </div>
 
       <!-- E-mail Client - START -->
-      
-      
-      
-      {% for message in messages %}
+      <div id="message" class="alert alert-primary ml-auto text-center" role="alert">
+        {% for message in messages %}
         {{message}}
-      {% endfor %}
-        
-      
+        {% endfor %}      
+      </div>
       <div class="container pb-mail-template1">
         <div class="row">
           <div class="col-md-12">
