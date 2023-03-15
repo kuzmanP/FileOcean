@@ -15,12 +15,12 @@ class userCategory(models.Model):
         return 
 
 #Storage location
-fs=FileSystemStorage(location='media/avatars')
+# fs=FileSystemStorage(location='media/avatars')
 
 class Profile(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     bio=models.TextField()
-    avatar=models.ImageField(storage=fs)
+    avatar=models.ImageField(upload_to='media/avatars/')
     contact=models.CharField(max_length=10)
     User_type=models.ForeignKey(userCategory,null=True, on_delete=models.CASCADE)
     
