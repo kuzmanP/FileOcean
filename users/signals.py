@@ -15,5 +15,5 @@ def create_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, created, **kwargs):
     instance.profile.save()
-    messages.success(request, 'Your Profile has been Successfully created')
+    
         
