@@ -71,7 +71,7 @@ def ProfileUpdate(request):
         if profile_form.is_valid():
             profile_form.save()
             messages.success(request, 'Your Profile Has Been Updated')
-            return render(request, 'Templates/userProfile.html')
+            return redirect('profile')
         
             
     else:
