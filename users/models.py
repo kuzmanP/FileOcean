@@ -20,7 +20,7 @@ class userCategory(models.Model):
 class Profile(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     bio=models.TextField()
-    avatar=models.ImageField(upload_to='media/avatars/')
+    avatar=models.ImageField(upload_to='media/')
     contact=models.CharField(max_length=10)
     User_type=models.ForeignKey(userCategory,null=True, on_delete=models.CASCADE)
     
